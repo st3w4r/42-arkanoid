@@ -24,8 +24,8 @@
 
 # define WIN_W 400
 # define WIN_W_MIN 400
-# define WIN_H 400
-# define WIN_H_MIN 400
+# define WIN_H 500
+# define WIN_H_MIN 500
 
 # define BRICK_WIDTH 40
 # define BRICK_HEIGHT 20
@@ -75,5 +75,14 @@ void	ark_exit(void);
 void	ark_malloc_error(void);
 void	ark_error_str(char *str);
 void	ark_error_str_exit(char *str);
+
+/*
+** Name: ark_draw
+** File: ark_draw.c
+** Desc: Display Window
+*/
+void		window_size_callback(GLFWwindow *window, int width, int height);
+void		ark_draw_game(GLFWwindow *window);
+
 
 #endif

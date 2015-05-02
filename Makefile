@@ -21,7 +21,8 @@ LIBS = -L ./libft/ -lft -L ./glfw/src/ -lglfw3 -framework Cocoa -framework OpenG
 SRC =	main.c \
 		ark_parser.c  \
 		ark_init.c \
-		ark_error.c
+		ark_error.c \
+		ark_draw.c
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
 
