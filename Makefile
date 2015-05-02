@@ -6,7 +6,7 @@
 #    By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/01 21:27:57 by pdelobbe          #+#    #+#              #
-#    Updated: 2015/05/02 15:36:40 by ybarbier         ###   ########.fr        #
+#    Updated: 2015/05/02 16:20:45 by ybarbier         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -23,6 +23,8 @@ LIBS = -L ./glfw/src/ -lglfw3 -framework Cocoa -framework OpenGL -framework IOKi
 SRC = main.c
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
+
+.PHONY: clean fclean re glfw libft_build glfw_build
 
 all: glfw libft_build glfw_build $(NAME)
 
@@ -41,8 +43,6 @@ libft_build:
 
 glfw_build:
 	make -C glfw/
-
-.PHONY: clean fclean glfw libft_build glfw_build
 
 clean:
 	make -C libft/ clean
