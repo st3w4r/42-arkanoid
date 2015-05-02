@@ -24,21 +24,20 @@ SRC = main.c
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
 
-.PHONY: clean fclean re libft_build glfw_build
 
-all: libft_build glfw_build $(NAME)
+.PHONY: clean fclean re glfw libft_build glfw_build
+
+all: glfw libft_build glfw_build $(NAME)
 
 $(NAME): $(OBJ)
-	git submodule init
-	git submodule update
 	$(CC) $(OBJ) -o $(NAME) $(LIBS)
 
-#glfw:
-#	git submodule init ;\
-#	git submodule update ;\
-#	cd glfw/ ;\
-#	cmake . ; \
-#	cd ..
+@glfw:
+	git submodule init ;\
+	git submodule update ;\
+	cd glfw/ ;\
+	cmake . ; \
+	cd ..
 
 libft_build:
 	make -C libft/
