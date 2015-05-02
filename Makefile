@@ -6,7 +6,7 @@
 #    By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/01 21:27:57 by pdelobbe          #+#    #+#              #
-#    Updated: 2015/05/02 17:43:46 by ybarbier         ###   ########.fr        #
+#    Updated: 2015/05/02 18:07:12 by ybarbier         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -30,7 +30,7 @@ OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
 all: glfw libft_build glfw_build $(NAME)
 
 $(NAME): $(OBJ)
-	cd glfw/ ;\
+	@cd glfw/ ;\
 	cmake . ;
 	@make -C glfw/
 	$(CC) $(OBJ) -o $(NAME) $(LIBS)
