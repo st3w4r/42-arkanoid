@@ -6,7 +6,7 @@
 #    By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/01 21:27:57 by pdelobbe          #+#    #+#              #
-#    Updated: 2015/05/02 21:04:57 by pdelobbe         ###   ########.fr        #
+#    Updated: 2015/05/02 22:18:00 by pdelobbe         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -18,9 +18,9 @@ PATH_INC = ./libft/includes/
 CC = cc
 # -Wall -Wextra -Werror
 CFLAGS = -I $(PATH_INC) -I ./glfw/include/
-LIBS = -L ./glfw/src/ -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo
+LIBS = -L ./libft/ -lft -L ./glfw/src/ -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo
 
-SRC = main.c
+SRC = main.c ark_parser.c ark_init.c
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
 
