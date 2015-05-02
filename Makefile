@@ -12,15 +12,14 @@
 
 NAME = arkanoid
 PATH_SRC = ./src/
-PATH_INC = ./libft/includes/
 
 CC = cc
 # -Wall -Wextra -Werror
-CFLAGS = -I $(PATH_INC) -I ./glfw/include/
-LIBS = -L ./glfw/src/ -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo
+CFLAGS = -I ./libft/includes/ -I ./glfw/include/
+LIBS = -L ./libft/ -lft -L ./glfw/src/ -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo
 
 SRC =	main.c \
-		ft_error.c
+		ark_error.c
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
 

@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <GLFW/glfw3.h>
-#include "libft.h"
+#include "arkanoid.h"
 
 static void key_callback(GLFWwindow* window, int key, int scancode, \
 	int action, int mods)
@@ -23,7 +22,7 @@ static void key_callback(GLFWwindow* window, int key, int scancode, \
 static void error_callback(int error, const char* description)
 {
 	(void)error;
-	ft_error_str(description);
+	ark_error_str((char*)description);
 }
 
 int main(void)
@@ -52,13 +51,13 @@ int main(void)
 	while (!glfwWindowShouldClose(window))
 	{
 		glfwGetFramebufferSize(window, &width, &height);
-		glViewPort(0, 0, width, height);
+		glViewport(0, 0, width, height);
 		time = glfwGetTime();
-		glfwSwapBuffer(window);
+		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
 
-	glfwDestroyWindow(winodw);
+	glfwDestroyWindow(window);
 	glfwTerminate();
 	exit(EXIT_SUCCESS);
 
