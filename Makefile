@@ -6,7 +6,7 @@
 #    By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/01 21:27:57 by pdelobbe          #+#    #+#              #
-#    Updated: 2015/05/02 16:20:45 by ybarbier         ###   ########.fr        #
+#    Updated: 2015/05/02 16:34:03 by ybarbier         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -24,6 +24,8 @@ SRC = main.c
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
 
+GLFW_sub = include ./glfw/Makefile
+
 .PHONY: clean fclean re glfw libft_build glfw_build
 
 all: glfw libft_build glfw_build $(NAME)
@@ -31,12 +33,14 @@ all: glfw libft_build glfw_build $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(OBJ) -o $(NAME) $(LIBS)
 
-glfw:
+#glfw: $(GLFW_sub)
+ifeq ($(GLFW_sub), undefine)
 	git submodule init
 	git submodule update
 	cd glfw/ ;\
 	cmake . ; \
 	cd ..
+endif
 
 libft_build:
 	make -C libft/
