@@ -6,7 +6,7 @@
 #    By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/01 21:27:57 by pdelobbe          #+#    #+#              #
-#    Updated: 2015/05/02 16:51:48 by ybarbier         ###   ########.fr        #
+#    Updated: 2015/05/02 17:38:58 by ybarbier         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -32,12 +32,11 @@ all: glfw libft_build glfw_build $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(OBJ) -o $(NAME) $(LIBS)
 
-@glfw:
-	git submodule init ;\
+glfw:
+	@git submodule init ;\
 	git submodule update ;\
 	cd glfw/ ;\
 	cmake . ; \
-	cd ..
 
 libft_build:
 	make -C libft/
