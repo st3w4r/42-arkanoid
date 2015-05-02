@@ -22,21 +22,37 @@
 # include <GLFW/glfw3.h>
 # include "libft.h"
 
-# define WIN_WIDTH 400
-# define WIN_WIDTH_MIN 400
-# define WIN_HEIGHT 400
-# define WIN_HEIGHT_MIN 400
+# define WIN_W 400
+# define WIN_W_MIN 400
+# define WIN_H 400
+# define WIN_H_MIN 400
 
 # define BRICK_WIDTH 40
 # define BRICK_HEIGHT 20
 
 # define BALL_DIAM 10
 
+typedef struct	s_ball
+{
+	int			x;
+	int			y;
+	int			diam;
+}				t_ball;
+
+typedef struct	s_player
+{
+	int			x;
+	int			y;
+	int			width;
+	int			height;
+}				t_player;
+
 typedef struct	s_lvl
 {
 	int			grid[10][5];
-	int			htis;
 	int			life;
+	t_player	player;
+	t_ball		ball;
 }				t_lvl;
 
 typedef struct	s_ark
@@ -44,6 +60,7 @@ typedef struct	s_ark
 	char		**levels;
 	int			count_lvl;
 	int			current_lvl;
+	t_lvl		lvl;
 }				t_ark;
 
 int		ark_list_levels(t_ark *ark, char *filename);

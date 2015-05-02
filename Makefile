@@ -6,7 +6,7 @@
 #    By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/01 21:27:57 by pdelobbe          #+#    #+#              #
-#    Updated: 2015/05/02 18:07:12 by ybarbier         ###   ########.fr        #
+#    Updated: 2015/05/02 22:18:00 by pdelobbe         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -19,6 +19,8 @@ CFLAGS = -I ./libft/includes/ -I ./glfw/include/
 LIBS = -L ./libft/ -lft -L ./glfw/src/ -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo
 
 SRC =	main.c \
+		ark_parser.c  \
+		ark_init.c \
 		ark_error.c
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
