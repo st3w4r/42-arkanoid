@@ -6,7 +6,7 @@
 #    By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/01 21:27:57 by pdelobbe          #+#    #+#              #
-#    Updated: 2015/05/01 22:54:36 by ybarbier         ###   ########.fr        #
+#    Updated: 2015/05/02 15:36:40 by ybarbier         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -24,29 +24,33 @@ SRC = main.c
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
 
-all: $(NAME) glfw
+all: glfw libft_build glfw_build $(NAME)
 
-$(NAME): $(OBJ) glfw
+$(NAME): $(OBJ)
 	$(CC) $(OBJ) -o $(NAME) $(LIBS)
 
-glfw: lib
+glfw:
 	git submodule init
 	git submodule update
-	cmake
+	cd glfw/ ;\
+	cmake . ; \
+	cd ..
 
-lib:
+libft_build:
 	make -C libft/
+
+glfw_build:
 	make -C glfw/
 
-.PHONY: clean fclean
+.PHONY: clean fclean glfw libft_build glfw_build
 
 clean:
 	make -C libft/ clean
 	make -C glfw/ clean
-	/bin/rm -f $(OBJ)
+	rm -f $(OBJ)
 
-fclean:	clean
+fclean: clean
 	make -C libft/ fclean
-	/bin/rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
