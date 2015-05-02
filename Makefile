@@ -10,7 +10,6 @@
 #                                                                              #
 #******************************************************************************#
 
-
 NAME = arkanoid
 PATH_SRC = ./src/
 PATH_INC = ./libft/includes/
@@ -20,7 +19,8 @@ CC = cc
 CFLAGS = -I $(PATH_INC) -I ./glfw/include/
 LIBS = -L ./glfw/src/ -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo
 
-SRC = main.c
+SRC =	main.c \
+		ft_error.c
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
 
