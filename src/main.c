@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 01:25:48 by pdelobbe          #+#    #+#             */
-/*   Updated: 2015/05/03 01:21:45 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2015/05/03 23:06:07 by pdelobbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int		main(int argc, char *argv[])
 				ark.lvl.player.height = 0.05f;
 				while (!glfwWindowShouldClose(window) && ark.lvl.life > 0)
 				{
+					ark_update_game();
 					ark_draw_game(window, &ark);
 					// Break : ark.lvl.life == 0
 				}

@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/02 20:18:50 by pdelobbe          #+#    #+#             */
-/*   Updated: 2015/05/03 01:22:03 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2015/05/03 22:52:42 by pdelobbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,11 @@
 # define WIN_H 700
 # define WIN_H_MIN 700
 
-# define BRICK_WIDTH 40
-# define BRICK_HEIGHT 20
+# define BW 0.2
+# define BH 0.0666
+
+# define PW 0.4
+# define PH 0.0666
 
 # define BALL_DIAM 10
 
@@ -85,6 +88,9 @@ void		ark_error_str_exit(char *str);
 ** Desc: Display Window
 */
 void		window_size_callback(GLFWwindow *window, int width, int height);
+void		ark_draw_ball(float x, float y);
+void		ark_draw_player(float x, float y);
+void		ark_draw_brick(float x, float y, int hits);
 void		ark_draw_game(GLFWwindow *window, t_ark *ark);
 
 /*
