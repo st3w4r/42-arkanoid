@@ -22,7 +22,8 @@ SRC =	main.c \
 		ark_parser.c  \
 		ark_init.c \
 		ark_error.c \
-		ark_draw.c
+		ark_draw.c \
+		ark_player.c
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
 

@@ -17,6 +17,9 @@ static void key_callback(GLFWwindow* window, int key, int scancode, \
 {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GL_TRUE);
+	if ((key == GLFW_KEY_LEFT && action == GLFW_PRESS) ||
+		(key == GLFW_KEY_RIGHT && action == GLFW_PRESS))
+		ark_player_move(window, key);
 }
 
 static void error_callback(int error, const char* description)
@@ -90,6 +93,7 @@ int		main(int argc, char *argv[])
 			glfwSwapInterval(1);
 			glfwSetKeyCallback(window, key_callback);
 			glfwSetWindowSizeCallback(window, window_size_callback);
+			glfwSetKeyCallback(window, key_callback);
 			while (ark.current_lvl < ark.count_lvl)
 			{
 				//ark_load_level(&ark);

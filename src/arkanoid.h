@@ -63,18 +63,18 @@ typedef struct	s_ark
 	t_lvl		lvl;
 }				t_ark;
 
-int		ark_list_levels(t_ark *ark, char *filename);
-int		ark_init_level(t_ark *ark, t_lvl *lvl);
+int			ark_list_levels(t_ark *ark, char *filename);
+int			ark_init_level(t_ark *ark, t_lvl *lvl);
 
 /*
 ** Name: ark_error
 ** File: ark_error.c
 ** Desc: Gestion error
 */
-void	ark_exit(void);
-void	ark_malloc_error(void);
-void	ark_error_str(char *str);
-void	ark_error_str_exit(char *str);
+void		ark_exit(void);
+void		ark_malloc_error(void);
+void		ark_error_str(char *str);
+void		ark_error_str_exit(char *str);
 
 /*
 ** Name: ark_draw
@@ -83,6 +83,13 @@ void	ark_error_str_exit(char *str);
 */
 void		window_size_callback(GLFWwindow *window, int width, int height);
 void		ark_draw_game(GLFWwindow *window, t_ark *ark);
+
+/*
+** Name: ark_player
+** File: ark_player.c
+** Desc: Player bar
+*/
+void		ark_player_move(GLFWwindow *window, int key);
 
 
 #endif
