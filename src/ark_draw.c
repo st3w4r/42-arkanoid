@@ -89,35 +89,17 @@ void		ark_draw_bricks(GLFWwindow *window, t_ark *ark)
 		while (x < 10)
 		{
 			if (ark->lvl.grid[x][y] == 1)
-			{
-
-				// glVertex2f((-1.f / 5.0) + (y * BRICK_WIDTH), (1.f / 10.0) + (x * BRICK_HEIGHT));
-				// glVertex2f((1.f / 5.0) + (y * BRICK_WIDTH) + BRICK_WIDTH, (1.f / 10.0) + (x * BRICK_HEIGHT));
-				// glVertex2f((-1.f / 5.0) + (x * BRICK_HEIGHT), (-1.f / 10.0) + (x * BRICK_HEIGHT));
-				// glVertex2f((1.f / 5.0) + (y * BRICK_WIDTH) + BRICK_WIDTH, (-1.f / 10.0) + (x * BRICK_HEIGHT));
-				//
-
-				// ; x y
 				glColor3f(1.f, 0.3f, 0.f);
+			else if (ark->lvl.grid[x][y] == 2)
+				glColor3f(0.7f, 0.3f, 0.f);
+			else if (ark->lvl.grid[x][y] == 3)
+				glColor3f(0.7f, 0.7f, 0.2f);
+			else if (ark->lvl.grid[x][y] == 4)
+				glColor3f(0.2f, 0.9f, 0.1f);
+			else if (ark->lvl.grid[x][y] == 5)
+				glColor3f(0.7f, 0.7f, 0.7f);
+			if (ark->lvl.grid[x][y] != 0)
 				ark_draw_brick(window, x, y);
-
-				// glVertex2f(-0.1f + (x * 0.2f) - 1.f + 0.1f, 0.05f + (y * 0.1f) - 0.5f + 0.05f);
-				// glVertex2f(0.1f + (x * 0.2f) - 1.f + 0.1f, 0.05f + (y * 0.1f) - 0.5f + 0.05f);
-				//
-				// glVertex2f(0.1f + (x * 0.2f) - 1.f + 0.1f, -0.05f + (y * 0.1f) - 0.5f + 0.05f);
-				// glVertex2f(-0.1f + (x * 0.2f) - 1.f + 0.1f, -0.05f + (y * 0.1f) - 0.5f + 0.05f);
-				//
-				// glVertex2f(-0.1f + 0.2f , 0.1f + 0.2f);
-				// glVertex2f(0.1f + 0.2f, 0.1f + 0.2f);
-				// glVertex2f(0.1f + 0.2f, -0.1f + 0.2f);
-				// glVertex2f(-0.1f + 0.2f, -0.1f + 0.2f);
-
-				//
-				// ft_putendl("x:");
-				// ft_putnbr(x);
-				// ft_putendl("y:");
-				// ft_putnbr(y);
-			}
 			x++;
 		}
 		y++;
