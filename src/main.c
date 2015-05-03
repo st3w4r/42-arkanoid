@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 01:25:48 by pdelobbe          #+#    #+#             */
-/*   Updated: 2015/05/02 22:02:10 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2015/05/02 23:53:46 by pdelobbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,6 @@ static void	ark_print_levels(t_ark *ark)
 	ft_putendl("------------------------------");
 }
 
-static void	ark_play_lvl(t_ark *ark)
-{
-	t_lvl lvl;
-
-	if (ark_init_level(ark, &lvl))
-	{
-		ft_putstr("Level \"");
-		ft_putstr(ark->levels[ark->current_lvl]);
-		ft_putendl("\" OK.");
-	}
-}
-
 int		main(int argc, char *argv[])
 {
 	t_ark		ark;
@@ -92,15 +80,15 @@ int		main(int argc, char *argv[])
 
 			while (ark.current_lvl < ark.count_lvl)
 			{
-				//ark_load_level(&ark);
-				while (!glfwWindowShouldClose(window))// && ark.lvl.life > 0)
+				ark_load_level(&ark);
+				while (!glfwWindowShouldClose(window) && ark.lvl.life > 0)
 				{
 					glfwGetFramebufferSize(window, &width, &height);
 					glViewport(0, 0, width, height);
 					time = glfwGetTime();
 					glfwSwapBuffers(window);
 					glfwPollEvents();
-					// Condition de changement de niveau
+					// Break : ark.lvl.life == 0
 				}
 				++ark.current_lvl;
 			}
