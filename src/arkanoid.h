@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/02 20:18:50 by pdelobbe          #+#    #+#             */
-/*   Updated: 2015/05/02 20:48:26 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2015/05/03 01:22:03 by pdelobbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct	s_player
 
 typedef struct	s_lvl
 {
-	int			grid[10][5];
+	int			grid[10][10];
 	int			life;
 	t_player	player;
 	t_ball		ball;
@@ -64,7 +64,7 @@ typedef struct	s_ark
 }				t_ark;
 
 int		ark_list_levels(t_ark *ark, char *filename);
-int		ark_init_level(t_ark *ark, t_lvl *lvl);
+int		ark_load_level(t_ark *ark);
 
 /*
 ** Name: ark_error
