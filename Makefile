@@ -14,8 +14,7 @@ NAME = arkanoid
 PATH_SRC = ./src/
 
 CC = cc
-# -Wall -Wextra -Werror
-CFLAGS = -g -I ./libft/includes/ -I ./glfw/include/
+CFLAGS = -I ./libft/includes/ -I ./glfw/include/ -Wall -Wextra -Werror
 LIBS = -L ./libft/ -lft -L ./glfw/src/ -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo
 
 SRC =	main.c \
@@ -30,7 +29,7 @@ SRC =	main.c \
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
 
 
-.PHONY: clean fclean re glfw libft_build glfw_build
+.PHONY: clean fclean re glfw libft_build
 
 all: glfw libft_build glfw_build $(NAME)
 
@@ -43,14 +42,9 @@ $(NAME): $(OBJ)
 glfw:
 	@git submodule init ;\
 	git submodule update ;\
-	#cd glfw/ ;\
-	#cmake . ; \
 
 libft_build:
 	@make -C libft/
-
-#glfw_build:
-#	make -C glfw/
 
 clean:
 	make -C libft/ clean
