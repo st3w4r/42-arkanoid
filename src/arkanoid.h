@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/02 20:18:50 by pdelobbe          #+#    #+#             */
-/*   Updated: 2015/05/02 23:19:30 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2015/05/03 01:22:03 by pdelobbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,14 @@
 
 # define WIN_W 400
 # define WIN_W_MIN 400
-# define WIN_H 400
-# define WIN_H_MIN 400
+# define WIN_H 700
+# define WIN_H_MIN 700
 
 # define BRICK_WIDTH 40
 # define BRICK_HEIGHT 20
 
 # define BALL_DIAM 10
+
 
 typedef struct	s_ball
 {
@@ -41,15 +42,15 @@ typedef struct	s_ball
 
 typedef struct	s_player
 {
-	int			x;
-	int			y;
-	int			width;
-	int			height;
+	float		x;
+	float		y;
+	float		width;
+	float		height;
 }				t_player;
 
 typedef struct	s_lvl
 {
-	int			grid[10][5];
+	int			grid[10][10];
 	int			life;
 	t_player	player;
 	t_ball		ball;
@@ -63,6 +64,8 @@ typedef struct	s_ark
 	t_lvl		lvl;
 }				t_ark;
 
+t_ark	*g_ark;
+
 int		ark_list_levels(t_ark *ark, char *filename);
 int		ark_load_level(t_ark *ark);
 
@@ -71,9 +74,25 @@ int		ark_load_level(t_ark *ark);
 ** File: ark_error.c
 ** Desc: Gestion error
 */
-void	ark_exit(void);
-void	ark_malloc_error(void);
-void	ark_error_str(char *str);
-void	ark_error_str_exit(char *str);
+void		ark_exit(void);
+void		ark_malloc_error(void);
+void		ark_error_str(char *str);
+void		ark_error_str_exit(char *str);
+
+/*
+** Name: ark_draw
+** File: ark_draw.c
+** Desc: Display Window
+*/
+void		window_size_callback(GLFWwindow *window, int width, int height);
+void		ark_draw_game(GLFWwindow *window, t_ark *ark);
+
+/*
+** Name: ark_player
+** File: ark_player.c
+** Desc: Player bar
+*/
+void		ark_player_move(GLFWwindow *window, int key);
+
 
 #endif

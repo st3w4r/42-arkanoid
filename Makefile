@@ -6,7 +6,7 @@
 #    By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/01 21:27:57 by pdelobbe          #+#    #+#              #
-#    Updated: 2015/05/02 23:51:16 by pdelobbe         ###   ########.fr        #
+#    Updated: 2015/05/03 04:51:29 by pdelobbe         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,7 +22,9 @@ SRC =	main.c \
 		ark_parser.c  \
 		ark_init.c \
 		ark_loader.c \
-		ark_error.c
+		ark_error.c \
+		ark_draw.c \
+		ark_player.c
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
 

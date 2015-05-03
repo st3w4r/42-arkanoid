@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parser.c                                        :+:      :+:    :+:   */
+/*   ark_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/02 14:41:52 by pdelobbe          #+#    #+#             */
-/*   Updated: 2015/05/02 22:02:36 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2015/05/03 02:21:14 by pdelobbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,16 @@
 
 static void	ark_get_filenames(t_ark *ark, char *txt)
 {
+	int		i;
+
+	i = 0;
 	ark->levels = ft_strsplit(txt, '\n');
 	ark->levels[ark->count_lvl] = NULL;
+	while (i < ark->count_lvl)
+	{
+		ark->levels[i] = ft_strjoin("levels/", ark->levels[i]);
+		++i;
+	}
 }
 
 int			ark_list_levels(t_ark *ark, char *filename)

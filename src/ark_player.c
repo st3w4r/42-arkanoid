@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ark_error.c                                        :+:      :+:    :+:   */
+/*   ark_player.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbier <ybarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/28 18:49:55 by ybarbier          #+#    #+#             */
-/*   Updated: 2015/01/28 18:49:56 by ybarbier         ###   ########.fr       */
+/*   Created: 2015/05/03 04:29:31 by ybarbier          #+#    #+#             */
+/*   Updated: 2015/05/03 04:29:32 by ybarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "arkanoid.h"
 
-void	ark_exit(void)
+void		ark_player_move(GLFWwindow *window, int key)
 {
-	exit(1);
-}
-
-void	ark_malloc_error(void)
-{
-	ft_putstr_fd("malloc error\n", 2);
-	ark_exit();
-}
-
-void	ark_error_str(char *str)
-{
-	ft_putstr_fd(str, 2);
-}
-
-void	ark_error_str_exit(char *str)
-{
-	ft_putstr_fd(str, 2);
-	ark_exit();
+	if (key == GLFW_KEY_LEFT &&
+		g_ark->lvl.player.x > (-1 + (g_ark->lvl.player.width / 2)))
+		g_ark->lvl.player.x -= 0.05;
+	if (key == GLFW_KEY_RIGHT &&
+		g_ark->lvl.player.x < (1 - (g_ark->lvl.player.width / 2)))
+		g_ark->lvl.player.x += 0.05;
 }

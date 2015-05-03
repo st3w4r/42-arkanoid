@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 01:25:48 by pdelobbe          #+#    #+#             */
-/*   Updated: 2015/05/02 23:53:46 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2015/05/03 01:21:45 by pdelobbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ static void key_callback(GLFWwindow* window, int key, int scancode, \
 {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GL_TRUE);
+
+	if ((key == GLFW_KEY_LEFT &&
+		(action == GLFW_PRESS || (action ==  GLFW_REPEAT))) ||
+		(key == GLFW_KEY_RIGHT &&
+		(action == GLFW_PRESS || (action ==  GLFW_REPEAT))))
+		ark_player_move(window, key);
 }
 
 static void error_callback(int error, const char* description)
@@ -77,17 +83,19 @@ int		main(int argc, char *argv[])
 			glfwMakeContextCurrent(window);
 			glfwSwapInterval(1);
 			glfwSetKeyCallback(window, key_callback);
+			glfwSetWindowSizeCallback(window, window_size_callback);
+			g_ark = &ark;
 
-			while (ark.current_lvl < ark.count_lvl)
+			while (!glfwWindowShouldClose(window) && ark.current_lvl < ark.count_lvl)
 			{
 				ark_load_level(&ark);
+				ark.lvl.player.x = 0.f;
+				ark.lvl.player.y = 0.f;
+				ark.lvl.player.width = 0.6f;
+				ark.lvl.player.height = 0.05f;
 				while (!glfwWindowShouldClose(window) && ark.lvl.life > 0)
 				{
-					glfwGetFramebufferSize(window, &width, &height);
-					glViewport(0, 0, width, height);
-					time = glfwGetTime();
-					glfwSwapBuffers(window);
-					glfwPollEvents();
+					ark_draw_game(window, &ark);
 					// Break : ark.lvl.life == 0
 				}
 				++ark.current_lvl;
@@ -126,28 +134,30 @@ int		main(int argc, char *argv[])
 	glfwSetKeyCallback(window, key_callback);
 	while (!glfwWindowShouldClose(window))
 	{
-		// float ratio;
-		// int width, height;
-		// glfwGetFramebufferSize(window, &width, &height);
-		// ratio = width / (float) height;
-		// glViewport(0, 0, width, height);
-		// glClear(GL_COLOR_BUFFER_BIT);
-		// glMatrixMode(GL_PROJECTION);
-		// glLoadIdentity();
-		// glOrtho(-ratio, ratio, -1.f, 1.f, 1.f, -1.f);
-		// glMatrixMode(GL_MODELVIEW);
-		// glLoadIdentity();
-		// glRotatef((float) glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
-		// glBegin(GL_TRIANGLES);
-		// glColor3f(1.f, 0.f, 0.f);
-		// glVertex3f(-0.6f, -0.4f, 0.f);
-		// glColor3f(0.f, 1.f, 0.f);
-		// glVertex3f(0.6f, -0.4f, 0.f);
-		// glColor3f(0.f, 0.f, 1.f);
-		// glVertex3f(0.f, 0.6f, 0.f);
-		// glEnd();
-		// glfwSwapBuffers(window);
-		// glfwPollEvents();
+		float ratio;
+		int width, height;
+		glfwGetFramebufferSize(window, &width, &height);
+		ratio = width / (float) height;
+		glViewport(0, 0, width, height);
+
+		glClear(GL_COLOR_BUFFER_BIT);
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		glOrtho(-ratio, ratio, -1.f, 1.f, 1.f, -1.f);
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+		glRotatef((float) glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
+		glBegin(GL_TRIANGLES);
+		glColor3f(1.f, 0.f, 0.f);
+		glVertex3f(-0.6f, -0.4f, 0.f);
+		glColor3f(0.f, 1.f, 0.f);
+		glVertex3f(0.6f, -0.4f, 0.f);
+		glColor3f(0.f, 0.f, 1.f);
+		glVertex3f(0.f, 0.6f, 0.f);
+		glEnd();
+
+		glfwSwapBuffers(window);
+		glfwPollEvents();
 	}
 
 	glfwDestroyWindow(window);
