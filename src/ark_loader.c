@@ -29,24 +29,12 @@ static void	ark_complete_grid(t_lvl *lvl, int j)
 	}
 }
 
-static void	ark_fill_line(t_lvl *lvl, int index, int i, char *str)
+static void	ark_fill_line(t_lvl *lvl, int index, int i, char c)
 {
-	int		isdigit;
-	int		j;
-
-	isdigit = 1;
-	j = 0;
-	while (str[j])
+	if (ft_isdigit(c))
 	{
-		if (!ft_isdigit(str[j]))
-			isdigit = 0;
-		++j;
-	}
-	if (isdigit)
-	{
-		lvl->grid[i][index] = ft_atoi(str);
-		if (lvl->grid[i][index] > 5)
-			lvl->grid[i][index] = 5;
+		lvl->grid[i][index] = c - 48;
+		lvl->life += c - 48;
 	}
 	else
 		lvl->grid[i][index] = 0;
@@ -54,14 +42,12 @@ static void	ark_fill_line(t_lvl *lvl, int index, int i, char *str)
 
 static void	ark_read_line(t_lvl *lvl, char *str, int index)
 {
-	char	**vals;
 	int		i;
 
 	i = 0;
-	vals = ft_strsplit(str, ' ');
-	while (vals[i] && i < 10)
+	while (str[i] && i < 10)
 	{
-		ark_fill_line(lvl, index, i, vals[i]);
+		ark_fill_line(lvl, index, i, str[i]);
 		++i;
 	}
 	while (i < 10)
@@ -100,7 +86,7 @@ int			ark_load_level(t_ark *ark)
 	int		i;
 
 	i = 0;
-	ft_putendl(ark->levels[ark->current_lvl]);
+	ark->lvl.life = 0;
 	str = NULL;
 	if ((fd = open(ark->levels[ark->current_lvl], O_RDONLY)) != -1)
 	{
@@ -108,13 +94,13 @@ int			ark_load_level(t_ark *ark)
 		{
 			if (str[0] && str[0] != '\n')
 			{
-				ark_read_line(&ark->lvl, str, i);
+				ark_read_line(&(ark->lvl), str, i);
 				++i;
 			}
 		}
 	}
+	close(fd);
 	ark_complete_grid(&ark->lvl, i);
-	ark->lvl.life = 3;
 	ark_print_grid(ark);
 	return (1);
 }

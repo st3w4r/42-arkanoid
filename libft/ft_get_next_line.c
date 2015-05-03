@@ -74,7 +74,7 @@ int			ft_get_next_line(int const fd, char **line)
 	else
 		result = ft_read_line(fd, &buf, line, NULL);
 	if (result == 0 && ft_strlen(*line) == 0)
-		free(buf);
+		;
 	if (result == -1)
 		return (-1);
 	return (result ? 1 : ft_strlen(*line) != 0);
