@@ -93,9 +93,20 @@ int		main(int argc, char *argv[])
 			while (ark.current_lvl < ark.count_lvl)
 			{
 				//ark_load_level(&ark);
+				for (int i = 0; i < 10; i++)
+					for (int j = 0; j < 10; j++)
+						ark.lvl.grid[i][j] = 0;
+				ark.lvl.grid[0][0] = 1;
+				ark.lvl.grid[1][1] = 1;
+				ark.lvl.grid[2][1] = 1;
+
+				ark.lvl.grid[3][3] = 1;
+				ark.lvl.grid[4][4] = 1;
+				ark.lvl.grid[5][5] = 1;
+
 				while (!glfwWindowShouldClose(window))// && ark.lvl.life > 0)
 				{
-					ark_draw_game(window);
+					ark_draw_game(window, &ark);
 					// Condition de changement de niveau
 				}
 				++ark.current_lvl;

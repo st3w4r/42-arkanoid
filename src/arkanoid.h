@@ -49,7 +49,7 @@ typedef struct	s_player
 
 typedef struct	s_lvl
 {
-	int			grid[10][5];
+	int			grid[10][10];
 	int			life;
 	t_player	player;
 	t_ball		ball;
@@ -82,7 +82,7 @@ void	ark_error_str_exit(char *str);
 ** Desc: Display Window
 */
 void		window_size_callback(GLFWwindow *window, int width, int height);
-void		ark_draw_game(GLFWwindow *window);
+void		ark_draw_game(GLFWwindow *window, t_ark *ark);
 
 
 #endif

@@ -48,7 +48,53 @@ void		ark_draw_life(GLFWwindow *window, int width, int height)
 	glEnd();
 }
 
-void		ark_draw_game(GLFWwindow *window)
+void		ark_draw_bricks(GLFWwindow *window, t_ark *ark)
+{
+	int x;
+	int y;
+
+	y = 0;
+
+	while (y < 10)
+	{
+		x = 0;
+		while (x < 10)
+		{
+			if (ark->lvl.grid[x][y] == 1)
+			{
+				glColor3f(1.f, 0.3f, 0.f);
+				// glVertex2f((-1.f / 5.0) + (y * BRICK_WIDTH), (1.f / 10.0) + (x * BRICK_HEIGHT));
+				// glVertex2f((1.f / 5.0) + (y * BRICK_WIDTH) + BRICK_WIDTH, (1.f / 10.0) + (x * BRICK_HEIGHT));
+				// glVertex2f((-1.f / 5.0) + (x * BRICK_HEIGHT), (-1.f / 10.0) + (x * BRICK_HEIGHT));
+				// glVertex2f((1.f / 5.0) + (y * BRICK_WIDTH) + BRICK_WIDTH, (-1.f / 10.0) + (x * BRICK_HEIGHT));
+				//
+
+				// ; x y
+
+				glVertex2f(-0.1f + (x * 0.2f), 0.05f + (y * 0.1f));
+				glVertex2f(0.1f + (x * 0.2f), 0.05f + (y * 0.1f));
+
+				glVertex2f(0.1f + (x * 0.2f), -0.05f + (y * 0.1f));
+				glVertex2f(-0.1f + (x * 0.2f), -0.05f + (y * 0.1f));
+				//
+				// glVertex2f(-0.1f + 0.2f , 0.1f + 0.2f);
+				// glVertex2f(0.1f + 0.2f, 0.1f + 0.2f);
+				// glVertex2f(0.1f + 0.2f, -0.1f + 0.2f);
+				// glVertex2f(-0.1f + 0.2f, -0.1f + 0.2f);
+
+				//
+				// ft_putendl("x:");
+				// ft_putnbr(x);
+				// ft_putendl("y:");
+				// ft_putnbr(y);
+			}
+			x++;
+		}
+		y++;
+	}
+}
+
+void		ark_draw_game(GLFWwindow *window, t_ark *ark)
 {
 	float	ratio;
 	int		width;
@@ -68,22 +114,14 @@ void		ark_draw_game(GLFWwindow *window)
 	// glRotatef((float) glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
 
 	glBegin(GL_QUADS);
-	glColor3f(1.f, 0.3f, 0.f);
 
-	glVertex2f(-1.f, -1.f);
-	glVertex2f(1.f, -1.f);
-	glVertex2f(1.f, 1.f);
-	glVertex2f(-1.f, 1.f);
-	// glColor3f(1.f, 0.f, 0.f);
-	// glVertex3f(-0.6f, -0.4f, 0.f);
-	// glColor3f(0.f, 1.f, 0.f);
-	// glVertex3f(0.6f, -0.4f, 0.f);
-	// glColor3f(0.f, 0.f, 1.f);
-	// glVertex3f(0.f, 0.6f, 0.f);
+	ark_draw_bricks(window, ark);
+
 	glEnd();
 
 	ark_draw_score(window, width, height);
 	ark_draw_life(window, width, height);
+
 
 	glfwSwapBuffers(window);
 	glfwPollEvents();
