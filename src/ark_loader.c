@@ -33,8 +33,12 @@ static void	ark_fill_line(t_lvl *lvl, int index, int i, char c)
 {
 	if (ft_isdigit(c))
 	{
-		lvl->grid[i][index] = c - 48;
-		lvl->life += c - 48;
+		c = (c - 48);
+		if (c > 5)
+			c = 5;
+		lvl->grid[i][index] = c;
+		if (c > 0 && c < 5)
+			lvl->life += c;
 	}
 	else
 		lvl->grid[i][index] = 0;

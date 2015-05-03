@@ -14,7 +14,7 @@ NAME = arkanoid
 PATH_SRC = ./src/
 
 CC = cc
-CFLAGS = -I ./libft/includes/ -I ./glfw/include/ -Wall -Wextra -Werror
+CFLAGS = -I ./libft/includes/ -I ./glfw/include/
 LIBS = -L ./libft/ -lft -L ./glfw/src/ -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo
 
 SRC =	main.c \
