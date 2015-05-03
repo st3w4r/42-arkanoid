@@ -24,8 +24,8 @@
 
 # define WIN_W 400
 # define WIN_W_MIN 400
-# define WIN_H 500
-# define WIN_H_MIN 500
+# define WIN_H 700
+# define WIN_H_MIN 700
 
 # define BRICK_WIDTH 40
 # define BRICK_HEIGHT 20

@@ -14,10 +14,10 @@
 
 void		window_size_callback(GLFWwindow *window, int width, int height)
 {
-	if (width <= 400 || height <= 500)
+	if (width <= WIN_W_MIN || height <= WIN_H_MIN)
 	{
-		width = (width <= 400) ? 400 : width;
-		height = (height <= 500) ? 500 : height;
+		width = (width <= WIN_W_MIN) ? WIN_W_MIN : width;
+		height = (height <= WIN_H_MIN) ? WIN_H_MIN : height;
 		glfwSetWindowSize(window, width, height);
 	}
 }
@@ -48,13 +48,27 @@ void		ark_draw_life(GLFWwindow *window, int width, int height)
 	glEnd();
 }
 
+void 		ark_draw_brick(GLFWwindow *window, int x, int y)
+{
+	glVertex2f(-0.1f + (x * 0.2f) - 1.f + 0.1f, 0.05f + (y * 0.1f) - 0.5f + 0.05f);
+	glVertex2f(0.1f + (x * 0.2f) - 1.f + 0.1f, 0.05f + (y * 0.1f) - 0.5f + 0.05f);
+
+	glVertex2f(0.1f + (x * 0.2f) - 1.f + 0.1f, -0.05f + (y * 0.1f) - 0.5f + 0.05f);
+	glVertex2f(-0.1f + (x * 0.2f) - 1.f + 0.1f, -0.05f + (y * 0.1f) - 0.5f + 0.05f);
+}
+
 void		ark_draw_bricks(GLFWwindow *window, t_ark *ark)
 {
 	int x;
 	int y;
 
-	y = 0;
 
+				glColor3f(1.f, 1.f, 1.f);
+				glVertex2f(-1.f, 1.f);
+				glVertex2f(1.f, 1.f);
+				glVertex2f(1.f, -1.f);
+				glVertex2f(-1.f, -1.f);
+	y = 0;
 	while (y < 10)
 	{
 		x = 0;
@@ -62,7 +76,7 @@ void		ark_draw_bricks(GLFWwindow *window, t_ark *ark)
 		{
 			if (ark->lvl.grid[x][y] == 1)
 			{
-				glColor3f(1.f, 0.3f, 0.f);
+
 				// glVertex2f((-1.f / 5.0) + (y * BRICK_WIDTH), (1.f / 10.0) + (x * BRICK_HEIGHT));
 				// glVertex2f((1.f / 5.0) + (y * BRICK_WIDTH) + BRICK_WIDTH, (1.f / 10.0) + (x * BRICK_HEIGHT));
 				// glVertex2f((-1.f / 5.0) + (x * BRICK_HEIGHT), (-1.f / 10.0) + (x * BRICK_HEIGHT));
@@ -70,12 +84,14 @@ void		ark_draw_bricks(GLFWwindow *window, t_ark *ark)
 				//
 
 				// ; x y
+				glColor3f(1.f, 0.3f, 0.f);
+				ark_draw_brick(window, x, y);
 
-				glVertex2f(-0.1f + (x * 0.2f), 0.05f + (y * 0.1f));
-				glVertex2f(0.1f + (x * 0.2f), 0.05f + (y * 0.1f));
-
-				glVertex2f(0.1f + (x * 0.2f), -0.05f + (y * 0.1f));
-				glVertex2f(-0.1f + (x * 0.2f), -0.05f + (y * 0.1f));
+				// glVertex2f(-0.1f + (x * 0.2f) - 1.f + 0.1f, 0.05f + (y * 0.1f) - 0.5f + 0.05f);
+				// glVertex2f(0.1f + (x * 0.2f) - 1.f + 0.1f, 0.05f + (y * 0.1f) - 0.5f + 0.05f);
+				//
+				// glVertex2f(0.1f + (x * 0.2f) - 1.f + 0.1f, -0.05f + (y * 0.1f) - 0.5f + 0.05f);
+				// glVertex2f(-0.1f + (x * 0.2f) - 1.f + 0.1f, -0.05f + (y * 0.1f) - 0.5f + 0.05f);
 				//
 				// glVertex2f(-0.1f + 0.2f , 0.1f + 0.2f);
 				// glVertex2f(0.1f + 0.2f, 0.1f + 0.2f);
@@ -103,7 +119,7 @@ void		ark_draw_game(GLFWwindow *window, t_ark *ark)
 	glfwGetFramebufferSize(window, &width, &height);
 	ratio = width / (float) height;
 
-	glViewport((width / 2) - 200, (height / 2) - 200, 400, 400); //Game
+	glViewport((width / 2) - 200, (height / 2) - 300, 400, 600); //Game
 
 	glClear(GL_COLOR_BUFFER_BIT);
 	glMatrixMode(GL_PROJECTION);

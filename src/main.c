@@ -97,12 +97,18 @@ int		main(int argc, char *argv[])
 					for (int j = 0; j < 10; j++)
 						ark.lvl.grid[i][j] = 0;
 				ark.lvl.grid[0][0] = 1;
+				ark.lvl.grid[0][9] = 1;
 				ark.lvl.grid[1][1] = 1;
 				ark.lvl.grid[2][1] = 1;
 
 				ark.lvl.grid[3][3] = 1;
 				ark.lvl.grid[4][4] = 1;
 				ark.lvl.grid[5][5] = 1;
+				ark.lvl.grid[4][1] = 1;
+				ark.lvl.grid[1][1] = 1;
+				ark.lvl.grid[3][1] = 1;
+				ark.lvl.grid[9][0] = 1;
+				ark.lvl.grid[9][9] = 1;
 
 				while (!glfwWindowShouldClose(window))// && ark.lvl.life > 0)
 				{
