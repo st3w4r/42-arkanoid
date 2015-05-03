@@ -32,6 +32,7 @@
 
 # define BALL_DIAM 10
 
+
 typedef struct	s_ball
 {
 	int			x;
@@ -41,10 +42,10 @@ typedef struct	s_ball
 
 typedef struct	s_player
 {
-	int			x;
-	int			y;
-	int			width;
-	int			height;
+	float		x;
+	float		y;
+	float		width;
+	float		height;
 }				t_player;
 
 typedef struct	s_lvl
@@ -62,6 +63,8 @@ typedef struct	s_ark
 	int			current_lvl;
 	t_lvl		lvl;
 }				t_ark;
+
+t_ark	*g_ark;
 
 int		ark_list_levels(t_ark *ark, char *filename);
 int		ark_load_level(t_ark *ark);

@@ -57,15 +57,19 @@ void 		ark_draw_brick(GLFWwindow *window, int x, int y)
 	glVertex2f(-0.1f + (x * 0.2f) - 1.f + 0.1f, -0.05f + (y * 0.1f) - 0.5f + 0.05f);
 }
 
-void		ark_draw_player(GLFWwindow *window, t_ark *ark)
+void		ark_draw_player(GLFWwindow *window)
 {
 	glColor3f(9.f, 0.3f, 1.f);
-
-	glVertex2f(-0.3f, -0.90f);
-	glVertex2f(0.3f, -0.90f);
-	glVertex2f(0.3f, -0.95f);
-	glVertex2f(-0.3f, -0.95f);
+	glVertex2f(-(g_ark->lvl.player.width / 2) +
+				g_ark->lvl.player.x , -0.90f);
+	glVertex2f((g_ark->lvl.player.width / 2) +
+				g_ark->lvl.player.x, -0.90f);
+	glVertex2f((g_ark->lvl.player.width / 2) +
+				g_ark->lvl.player.x, -0.90f + (g_ark->lvl.player.height));
+	glVertex2f(-(g_ark->lvl.player.width / 2) +
+				g_ark->lvl.player.x, -0.90f + (g_ark->lvl.player.height));
 }
+
 
 void		ark_draw_bricks(GLFWwindow *window, t_ark *ark)
 {
@@ -142,7 +146,7 @@ void		ark_draw_game(GLFWwindow *window, t_ark *ark)
 	glBegin(GL_QUADS);
 
 	ark_draw_bricks(window, ark);
-	ark_draw_player(window, ark);
+	ark_draw_player(window);
 
 	glEnd();
 

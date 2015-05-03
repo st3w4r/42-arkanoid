@@ -14,5 +14,10 @@
 
 void		ark_player_move(GLFWwindow *window, int key)
 {
-	ft_putstr("In");
+	if (key == GLFW_KEY_LEFT &&
+		g_ark->lvl.player.x > (-1 + (g_ark->lvl.player.width / 2)))
+		g_ark->lvl.player.x -= 0.07;
+	if (key == GLFW_KEY_RIGHT &&
+		g_ark->lvl.player.x < (1 - (g_ark->lvl.player.width / 2)))
+		g_ark->lvl.player.x += 0.07;
 }

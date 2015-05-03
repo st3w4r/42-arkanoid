@@ -17,8 +17,11 @@ static void key_callback(GLFWwindow* window, int key, int scancode, \
 {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GL_TRUE);
-	if ((key == GLFW_KEY_LEFT && action == GLFW_PRESS) ||
-		(key == GLFW_KEY_RIGHT && action == GLFW_PRESS))
+
+	if ((key == GLFW_KEY_LEFT &&
+		(action == GLFW_PRESS || (action ==  GLFW_REPEAT))) ||
+		(key == GLFW_KEY_RIGHT &&
+		(action == GLFW_PRESS || (action ==  GLFW_REPEAT))))
 		ark_player_move(window, key);
 }
 
@@ -80,10 +83,16 @@ int		main(int argc, char *argv[])
 			glfwMakeContextCurrent(window);
 			glfwSwapInterval(1);
 			glfwSetKeyCallback(window, key_callback);
+			glfwSetWindowSizeCallback(window, window_size_callback);
+			g_ark = &ark;
 
 			while (!glfwWindowShouldClose(window) && ark.current_lvl < ark.count_lvl)
 			{
 				ark_load_level(&ark);
+				ark.lvl.player.x = 0.f;
+				ark.lvl.player.y = 0.f;
+				ark.lvl.player.width = 0.6f;
+				ark.lvl.player.height = 0.05f;
 				while (!glfwWindowShouldClose(window) && ark.lvl.life > 0)
 				{
 					ark_draw_game(window, &ark);
