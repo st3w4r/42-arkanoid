@@ -16,9 +16,9 @@ void		ark_draw_ball(float x, float y)
 {
 	glBegin(GL_QUADS);
 	glColor3f(0.3f, 0.8f, 0.8f);
-	glVertex2f(((x / 200) -1), -((y / 300) - 1));
+	glVertex2f(((x / 200) - 1), -((y / 300) - 1));
 	glVertex2f((((x / 200) - 1) + 0.05), -((y / 300) - 1));
-	glVertex2f((((x / 200) -1) + 0.05), -((y / 300) - 1) - 0.0333);
+	glVertex2f((((x / 200) - 1) + 0.05), -((y / 300) - 1) - 0.0333);
 	glVertex2f(((x / 200) - 1), -((y / 300) - 1) - 0.0333);
 	glEnd();
 }
@@ -27,9 +27,9 @@ void		ark_draw_player(float x, float y)
 {
 	glBegin(GL_QUADS);
 	glColor3f(0.3f, 0.3f, 0.8f);
-	glVertex2f(((x / 200) -1), -((y / 300) - 1));
+	glVertex2f(((x / 200) - 1), -((y / 300) - 1));
 	glVertex2f((((x / 200) - 1) + PW), -((y / 300) - 1));
-	glVertex2f((((x / 200) -1) + PW), -((y / 300) - 1) - PH);
+	glVertex2f((((x / 200) - 1) + PW), -((y / 300) - 1) - PH);
 	glVertex2f(((x / 200) - 1), -((y / 300) - 1) - PH);
 	glEnd();
 }
@@ -49,9 +49,9 @@ void		ark_draw_brick(float x, float y, int hits)
 		glColor3f(0.8f, 0.3f, 0.3f);
 	else
 		glColor3f(0.8f, 0.3f, 0.3f);
-	glVertex2f(((x / 200) -1), -((y / 300) - 1));
+	glVertex2f(((x / 200) - 1), -((y / 300) - 1));
 	glVertex2f((((x / 200) - 1) + BW), -((y / 300) - 1));
-	glVertex2f((((x / 200) -1) + BW), -((y / 300) - 1) - BH);
+	glVertex2f((((x / 200) - 1) + BW), -((y / 300) - 1) - BH);
 	glVertex2f(((x / 200) - 1), -((y / 300) - 1) - BH);
 	glEnd();
 }

@@ -86,10 +86,10 @@ void			ark_error_str_exit(char *str);
 ** File: ark_draw.c
 ** Desc: Display Window
 */
-void		ark_draw_ball(float x, float y);
-void		ark_draw_player(float x, float y);
-void		ark_draw_brick(float x, float y, int hits);
-void		ark_draw_game(GLFWwindow *window, t_ark *ark);
+void			ark_draw_ball(float x, float y);
+void			ark_draw_player(float x, float y);
+void			ark_draw_brick(float x, float y, int hits);
+void			ark_draw_game(GLFWwindow *window, t_ark *ark);
 
 /*
 ** Name: ark_player

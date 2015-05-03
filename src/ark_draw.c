@@ -65,7 +65,7 @@ void		ark_draw_game(GLFWwindow *window, t_ark *ark)
 	int		height;
 
 	glfwGetFramebufferSize(window, &width, &height);
-	ratio = width / (float) height;
+	ratio = width / (float)height;
 	glViewport((width / 2) - 200, (height / 2) - 300, 400, 600);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glMatrixMode(GL_PROJECTION);
