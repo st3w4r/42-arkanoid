@@ -26,32 +26,39 @@ static void	ark_get_filenames(t_ark *ark, char *txt)
 	}
 }
 
+static void	ark_init_list(t_ark *ark, char **txt, char *str, int fd)
+{
+	int		n;
+
+	while ((n = ft_get_next_line(fd, &str)) == 1)
+	{
+		if (str[0])
+		{
+			if (str[0] != '\n')
+			{
+				*txt = ft_strjoin(*txt, "\n");
+				*txt = ft_strjoin(*txt, str);
+				++ark->count_lvl;
+			}
+		}
+	}
+}
+
 int			ark_list_levels(t_ark *ark, char *filename)
 {
 	int		fd;
-	int		n;
 	char	*str;
 	char	*txt;
 
 	ark->levels = NULL;
 	ark->count_lvl = 0;
 	ark->current_lvl = 0;
+	str = NULL;
 	if ((txt = (char *)malloc(1)) == NULL)
 		return (0);
 	if ((fd = open(filename, O_RDONLY)) != -1)
 	{
-		while ((n = ft_get_next_line(fd, &str)) == 1)
-		{
-			if (str[0])
-			{
-				if (str[0] != '\n')
-				{
-					txt = ft_strjoin(txt, "\n");
-					txt = ft_strjoin(txt, str);
-					++ark->count_lvl;
-				}
-			}
-		}
+		ark_init_list(ark, &txt, str, fd);
 	}
 	else
 		return (0);

@@ -55,16 +55,3 @@ void		ark_draw_brick(float x, float y, int hits)
 	glVertex2f(((x / 200) - 1), -((y / 300) - 1) - BH);
 	glEnd();
 }
-
- /*
-void		ark_draw_brick(float x, float y, int hits)
-{
-	glBegin(GL_QUADS);
-	glColor3f(0.8f, 0.3f, 0.3f);
-	glVertex2f(-0.9, 0.9);
-	glVertex2f(0.9, 0.9);
-	glVertex2f(0.9, -0.9);
-	glVertex2f(-0.9, -0.9);
-	glEnd();
-}
-*/

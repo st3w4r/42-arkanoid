@@ -12,7 +12,7 @@
 
 #include "arkanoid.h"
 
-void		ark_player_move(GLFWwindow *window, int key)
+void		ark_player_move(int key)
 {
 	if (key == GLFW_KEY_LEFT &&
 		g_ark->lvl.player.x > (-1 + (g_ark->lvl.player.width / 2)))

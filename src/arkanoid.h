@@ -35,7 +35,6 @@
 
 # define BALL_DIAM 10
 
-
 typedef struct	s_ball
 {
 	int			x;
@@ -69,25 +68,24 @@ typedef struct	s_ark
 
 t_ark	*g_ark;
 
-int		ark_list_levels(t_ark *ark, char *filename);
-int		ark_load_level(t_ark *ark);
+int				ark_list_levels(t_ark *ark, char *filename);
+int				ark_load_level(t_ark *ark);
 
 /*
 ** Name: ark_error
 ** File: ark_error.c
 ** Desc: Gestion error
 */
-void		ark_exit(void);
-void		ark_malloc_error(void);
-void		ark_error_str(char *str);
-void		ark_error_str_exit(char *str);
+void			ark_exit(void);
+void			ark_malloc_error(void);
+void			ark_error_str(char *str);
+void			ark_error_str_exit(char *str);
 
 /*
 ** Name: ark_draw
 ** File: ark_draw.c
 ** Desc: Display Window
 */
-void		window_size_callback(GLFWwindow *window, int width, int height);
 void		ark_draw_ball(float x, float y);
 void		ark_draw_player(float x, float y);
 void		ark_draw_brick(float x, float y, int hits);
@@ -98,7 +96,16 @@ void		ark_draw_game(GLFWwindow *window, t_ark *ark);
 ** File: ark_player.c
 ** Desc: Player bar
 */
-void		ark_player_move(GLFWwindow *window, int key);
+void			ark_player_move(int key);
 
+/*
+** Name: ark_player
+** File: ark_player.c
+** Desc: Player bar
+*/
+void			key_callback(GLFWwindow *window, int key, int scancode, \
+	int action, int mods);
+void			error_callback(int error, const char *description);
+void			window_size_callback(GLFWwindow *window, int width, int height);
 
 #endif

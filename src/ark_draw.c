@@ -12,17 +12,7 @@
 
 #include "arkanoid.h"
 
-void		window_size_callback(GLFWwindow *window, int width, int height)
-{
-	if (width <= WIN_W_MIN || height <= WIN_H_MIN)
-	{
-		width = (width <= WIN_W_MIN) ? WIN_W_MIN : width;
-		height = (height <= WIN_H_MIN) ? WIN_H_MIN : height;
-		glfwSetWindowSize(window, width, height);
-	}
-}
-
-void		ark_draw_score(GLFWwindow *window, int width, int height)
+void		ark_draw_score(int width, int height)
 {
 	glViewport(0, height - 50, width, 50);
 	glBegin(GL_QUADS);
@@ -34,7 +24,7 @@ void		ark_draw_score(GLFWwindow *window, int width, int height)
 	glEnd();
 }
 
-void		ark_draw_life(GLFWwindow *window, int width, int height)
+void		ark_draw_life(int width)
 {
 	glViewport(0, 0, width, 50);
 	glBegin(GL_QUADS);
@@ -85,8 +75,7 @@ void		ark_draw_game(GLFWwindow *window, t_ark *ark)
 	ark_draw_bricks(&ark->lvl);
 	ark_draw_player(g_ark->lvl.player.x, 560);
 	ark_draw_ball(5, 5);
-	ark_draw_score(window, width, height);
-	ark_draw_life(window, width, height);
+	ark_draw_score(width, height);
+	ark_draw_life(width);
 	glfwSwapBuffers(window);
-	glfwPollEvents();
 }

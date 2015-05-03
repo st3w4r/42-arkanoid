@@ -14,8 +14,7 @@ NAME = arkanoid
 PATH_SRC = ./src/
 
 CC = cc
-# -Wall -Wextra -Werror
-CFLAGS = -I ./libft/includes/ -I ./glfw/include/
+CFLAGS = -I ./libft/includes/ -I ./glfw/include/ -Wall -Wextra -Werror
 LIBS = -L ./libft/ -lft -L ./glfw/src/ -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo
 
 SRC =	main.c \
@@ -25,7 +24,8 @@ SRC =	main.c \
 		ark_error.c \
 		ark_draw_entity.c \
 		ark_draw.c \
-		ark_player.c
+		ark_player.c \
+		ark_callback.c
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
 
