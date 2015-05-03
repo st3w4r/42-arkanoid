@@ -31,7 +31,7 @@ OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
 
 .PHONY: clean fclean re glfw libft_build
 
-all: glfw libft_build glfw_build $(NAME)
+all: glfw libft_build $(NAME)
 
 $(NAME): $(OBJ)
 	@cd glfw/ ;\
