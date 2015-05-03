@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/02 20:18:50 by pdelobbe          #+#    #+#             */
-/*   Updated: 2015/05/02 20:48:26 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2015/05/03 01:22:03 by pdelobbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ typedef struct	s_ark
 	t_lvl		lvl;
 }				t_ark;
 
-int			ark_list_levels(t_ark *ark, char *filename);
-int			ark_init_level(t_ark *ark, t_lvl *lvl);
+int		ark_list_levels(t_ark *ark, char *filename);
+int		ark_load_level(t_ark *ark);
 
 /*
 ** Name: ark_error

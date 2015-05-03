@@ -6,7 +6,7 @@
 /*   By: pdelobbe <pdelobbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 01:25:48 by pdelobbe          #+#    #+#             */
-/*   Updated: 2015/05/02 22:02:10 by pdelobbe         ###   ########.fr       */
+/*   Updated: 2015/05/03 01:21:45 by pdelobbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,6 @@ static void	ark_print_levels(t_ark *ark)
 	ft_putendl("------------------------------");
 }
 
-static void	ark_play_lvl(t_ark *ark)
-{
-	t_lvl lvl;
-
-	if (ark_init_level(ark, &lvl))
-	{
-		ft_putstr("Level \"");
-		ft_putstr(ark->levels[ark->current_lvl]);
-		ft_putendl("\" OK.");
-	}
-}
-
 int		main(int argc, char *argv[])
 {
 	t_ark		ark;
@@ -92,32 +80,14 @@ int		main(int argc, char *argv[])
 			glfwMakeContextCurrent(window);
 			glfwSwapInterval(1);
 			glfwSetKeyCallback(window, key_callback);
-			glfwSetWindowSizeCallback(window, window_size_callback);
-			glfwSetKeyCallback(window, key_callback);
-			while (ark.current_lvl < ark.count_lvl)
+
+			while (!glfwWindowShouldClose(window) && ark.current_lvl < ark.count_lvl)
 			{
-				//ark_load_level(&ark);
-				for (int i = 0; i < 10; i++)
-					for (int j = 0; j < 10; j++)
-						ark.lvl.grid[i][j] = 0;
-				ark.lvl.grid[0][0] = 1;
-				ark.lvl.grid[0][9] = 1;
-				ark.lvl.grid[1][1] = 1;
-				ark.lvl.grid[2][1] = 1;
-
-				ark.lvl.grid[3][3] = 1;
-				ark.lvl.grid[4][4] = 1;
-				ark.lvl.grid[5][5] = 1;
-				ark.lvl.grid[4][1] = 1;
-				ark.lvl.grid[1][1] = 1;
-				ark.lvl.grid[3][1] = 1;
-				ark.lvl.grid[9][0] = 1;
-				ark.lvl.grid[9][9] = 1;
-
-				while (!glfwWindowShouldClose(window))// && ark.lvl.life > 0)
+				ark_load_level(&ark);
+				while (!glfwWindowShouldClose(window) && ark.lvl.life > 0)
 				{
 					ark_draw_game(window, &ark);
-					// Condition de changement de niveau
+					// Break : ark.lvl.life == 0
 				}
 				++ark.current_lvl;
 			}
